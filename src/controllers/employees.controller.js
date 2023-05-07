@@ -26,3 +26,5 @@ export const createEmployee = async(req,res) => {
 export const updateEmployee = (req,res) => res.send('actualizando empleados');
 
 export const deleteEmployee = (req,res) => res.send('eliminando empleados');
+
+https://www.youtube.com/watch?v=3dSkc-DIM74 tiempo 1:06:45
