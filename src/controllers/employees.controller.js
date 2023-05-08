@@ -8,7 +8,10 @@ export const getEmployees = async(req,res) => {
 export const getEmployee = async (req,res) => {
     const {id} = req.params
     const [rows] = await pool.query('SELECT * FROM employee WHERE id = ?', [id])
-    console.log(rows)
+   
+    if(rows.length <=0) return res.status(404).json({
+        message: 'Employee not found'
+    })
     res.json(rows[0])
 }
 
@@ -25,6 +28,10 @@ export const createEmployee = async(req,res) => {
 
 export const updateEmployee = (req,res) => res.send('actualizando empleados');
 
-export const deleteEmployee = (req,res) => res.send('eliminando empleados');
+export const deleteEmployee = async (req,res) => {
+    const {id} = req.params
+    const result =await pool.query('DELETE FROM employee WHERE id = ?', [id])
+    console.log(result)
+    res.send('employee deleted')
+};
 
-https://www.youtube.com/watch?v=3dSkc-DIM74 tiempo 1:06:45
